@@ -57,6 +57,8 @@
 
             ?><div class="articlePricing">
                 <form action='admin.php' method='post'>
+
+                    <input type='hidden' name='id_pricing' value='<?=$idPricing?>'>
                    
                     <div>
                     <label for='nom_pricing'>Name</label>
@@ -120,6 +122,12 @@
             </div><?php
             // var_dump($_POST['submit']);
             var_dump($_SESSION['datas']);
+
+            if (isset($_POST['submit'])){
+               $updateId = $_POST['id_pricing']; 
+               echo update($updateId);
+            }
+            var_dump(update($id));
             ?>
         </main>
     </section>

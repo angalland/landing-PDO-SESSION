@@ -24,11 +24,13 @@
     if (session_id() == "")
 	session_start();
     require_once "db-functions.php";
+	if (isset($_SESSION["errors"])){
 	foreach($_SESSION["errors"] as $error) {
 		if ($error != false) {
-			echo "<p style=\"margin:5px;padding:20px;color:#FF3333;background:#F8D7DA;border-left:solid #FF5555\">" . $error . "</p>";
+			echo $alert = "<p style=\"margin:5px;padding:20px;color:#FF3333;background:#F8D7DA;border-left:solid #FF5555\">" . $error . "</p>";
+			unset($alert);
 		}
-	}
+	}}
     ?>
 
     <section id="pricing">

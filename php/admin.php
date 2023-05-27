@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
     $_SESSION["errors"][] = ($datas['online_space'] = filter_input(INPUT_POST, "online_space", FILTER_VALIDATE_INT)) ? false : "online_space non reconnue";
     $_SESSION["errors"][] = ($datas['support'] = filter_input(INPUT_POST, "support", FILTER_VALIDATE_BOOL)) ? false : "support non reconnue";
     $_SESSION["errors"][] = ($datas['domain'] = filter_input(INPUT_POST, "domain", FILTER_VALIDATE_INT)) ? false : "domain non reconnue";
-    $_SESSION["errors"][] = ($datas['hidden_fees'] = filter_input(INPUT_POST, "hidden_fees", FILTER_VALIDATE_BOOL)) ? false : "hidden_fees";
+    $_SESSION["errors"][] = ($datas['hidden_fees'] = filter_input(INPUT_POST, "hidden_fees", FILTER_VALIDATE_BOOL)) ? false : "hidden_fees non reconnue";
 
     if (!empty($_SESSION["errors"])){
         header("Location:update.php");

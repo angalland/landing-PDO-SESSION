@@ -54,7 +54,7 @@
             $domain = $pricing['domain'];
             $hidden_fees = $pricing['hidden_fees'];
             }
-
+            // var_dump($idPricing);
             ?><div class="articlePricing">
                 <form action='admin.php' method='post'>
 
@@ -123,11 +123,9 @@
             // var_dump($_POST['submit']);
             var_dump($_SESSION['datas']);
 
-            if (isset($_POST['submit'])){
-               $updateId = $_POST['id_pricing']; 
-               echo update($updateId);
-            }
-            var_dump(update($id));
+            if (isset($_POST['submit'])){               
+               echo update();
+            };
             ?>
         </main>
     </section>

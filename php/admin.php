@@ -3,7 +3,8 @@
 session_start();
 
 if(isset($_POST['submit'])){
-    
+
+    $id = filter_input(INPUT_POST, "id_pricing", FILTER_VALIDATE_INT);
     $name = filter_input(INPUT_POST, "nom_pricing", FILTER_SANITIZE_STRING);
     $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT);
     $sale = filter_input(INPUT_POST, "sale", FILTER_VALIDATE_INT);
@@ -26,11 +27,12 @@ if(isset($_POST['submit'])){
     }
     
  
-    if ($name && $price && $sale && $bandwitch && $online_space && $domain ){
+    if ($id && $name && $price && $sale && $bandwitch && $online_space && $domain ){
         
         if ($price >= 0 && $sale >= 0 && $bandwitch >= 0 && $domain >= 0 && $online_space >= 0){
             
         $data = [
+            'id_pricing' => $id,
             'nom_pricing' => $name,
             'price' => $price,
             'sale' => $sale,

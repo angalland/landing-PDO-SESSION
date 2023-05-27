@@ -28,7 +28,7 @@ function pricing(){
     $pricingStatment->execute();
     $pricings = $pricingStatment->fetchAll();
     return $pricings; // retourne le tableau
-}
+};
 
 
 
@@ -45,7 +45,7 @@ function pricingById($id){
     $pricingStatment->execute();
     $pricings = $pricingStatment->fetchAll();
     return $pricings; // retourne les donnée de l'id saisie en argument de la fonction 
-}
+};
 
 
 // retourne une div qui affiche les données de l'id saisie en fonction
@@ -154,11 +154,10 @@ function donneePricing($id){
         <?php
 
     }                       
-}
+};
 
 function update(){
     $db = connexion();
-
     $sqlQuery = 'UPDATE pricing 
                  SET
                     nom_pricing = :nom_pricing,
@@ -169,14 +168,12 @@ function update(){
                     support = :support,
                     domain = :domain, 
                     hidden_fees = :hidden_fees
-                 WHERE id_pricing = :id
-                ';
-
+                 WHERE id_pricing = :id';
+                
     $updateStatment = $db->prepare($sqlQuery);
-
     foreach ($_SESSION['datas'] as $data) {
 
-        $idUpdate = $data['id_pricing'];
+        $id = $data['id_pricing'];
         $nom_pricing = $data['nom_pricing'];
         $price = $data['price'];
         $sale = $data['sale'];
@@ -187,7 +184,7 @@ function update(){
         $hidden_fees = $data['hidden_fees'];
 
         $updateStatment->execute([
-            'id' => $idUpdate,
+            'id' => $id,
             'nom_pricing' => $nom_pricing,
             'price' => $price,
             'sale' => $sale,
@@ -199,6 +196,6 @@ function update(){
             
         ]);
     }
-}
+};
     
     ?>

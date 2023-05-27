@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    min-width: 100%;
+    min-height: 100vh;  /* prend la taille d'un ecran */
+    padding: 0 9%; 
+}
+
+
+/* ---------------------- PRICING ----------------------------- */
+
+#pricing {
+    width: 100%;
+    padding: 0 9%;
+    background-color: #EAE7E6;
+}
+
+/* ---------------------Header Pricing ------------------------- */
+
+#headerPricing {
+    text-align: center;
+    padding: 5% 20% 5% 20%;
+}
+
+#h2HeaderPricing {
+    font-size: 2em;
+    margin: 0;
+}
+
+#pHeaderPricing {
+    font-size: 25px;
+    color: grey;
+}
+
+/* ------------------ main Pricing --------------------------- */
+
+.mainPricing {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    gap: 5%;
+    padding-bottom: 5%;
+}
+
+.articlePricing {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 25%;
+    height: 80%;
+    border-radius: 15px;
+    background-color: white;
+    gap: 0;
+    padding: 0;
+    box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px ;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 30px;
+    position: relative;
+    transition: 0.5s;
+}
+
+.articlePricing:hover {
+    transform: translateY(-15px);
+    cursor: pointer;
+}
+
+.article2Pricing {
+    position: relative;
+    top: -20px; /* positionne l'article 2 20px vers le haut */
+}
+
+.divArticlePricing {
+    position: absolute; /* sort du flux la div */
+    top:0;
+    right: 0;
+    background-color:hsl(223, 82%, 59%);
+    height: 50px;
+    width: 50px;
+    border-radius: 0 15px 0 15px;
+    color: white;
+    text-align: center;
+    border: solid hsl(223, 82%, 59%) 1;
+    font-size: 15px;
+    margin: 0;
+    padding-top: 5px;
+    filter: brightness(90%); /* assombrit la div */
+    display: flex;
+    align-items: center;
+}
+
+.h4Pricing{
+    width: 100%;
+    text-align: center;
+    font-weight: 1000;
+    font-size: 25px;
+    height: 30px;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.pPricing {
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    margin: 0;
+    color: grey;
+}
+
+.spanPricing{
+    color:hsl(223, 82%, 59%);
+    font-size: 25px;
+    justify-content: flex-start;
+}
+
+.strongArticle {
+    color:hsl(223, 82%, 59%);
+    font-size: 60px;
+}
+
+#iPricing {
+    width: 10%;
+    margin: 0;
+    text-align: center;
+    padding-left: 10px;
+    margin: 20px 0 0 0 ;
+}
+
+.pArticlePricing {
+    width: 50%;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px 0 0 0;
+    padding-left: 5px;
+}
+
+.p2ArticlePricing {
+    width: 40%;
+    text-align: right;
+    font-size: 20px;
+    font-weight: normal;
+    margin:20px 0 0 0;
+}
+
+.formArticlePricing {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.buttonArticlePricing {
+    width: 100%;
+    height: 50px;
+    background-color:hsl(223, 82%, 59%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: 0.5s;
+}
+
+.buttonArticlePricing:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+}

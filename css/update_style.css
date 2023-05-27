@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    min-width: 100%;
+    min-height: 100vh;  /* prend la taille d'un ecran */
+    padding: 0 9%; 
+}
+
+/* update_pricing ---------------------------------------------------*/
+
+#pricing {
+    width: 100%;
+    padding: 0 9%;
+}
+
+/* Header ----------------------------------------------------------*/
+#headerPricing {
+    text-align: center;
+    padding: 5% 20% 5% 20%;
+}
+
+h2 {
+    color: hsl(223, 82%, 59%);
+}
+
+/* Main ------------------------------------------------------------ */
+.mainPricing {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    position: relative;
+    gap: 5%;
+    padding-bottom: 5%;
+}
+
+.articlePricing {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 30%;
+    min-height: 80%;
+    border-radius: 15px;
+    background-color: white;
+    gap: 0;
+    padding: 0;
+    margin-bottom: 5%;
+    box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px ;
+    padding-left: 30px;
+    padding-right: 30px;
+    color : green;
+    font-size: large;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5%;
+    width: 100%;
+}
+
+
+form div {
+width: 45%;
+display: flex;
+flex-direction: column;
+min-height: 83px;
+margin-top: 25px;
+}
+
+form div > input, form div > select {
+    height: 50px;
+    font-size: 25px;
+    color: black;
+    font-weight:bold;
+}
+
+form div > label{
+    margin-bottom: 7px;
+    color: black;
+    font-weight: bolder;
+}
+
+#divUpdate {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#updateForm {
+    width: 80%;   
+    height: 50px;
+    background-color:hsl(223, 82%, 59%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: 0.5s;
+}
+
+#updateForm:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+
+.alert {
+    background-color: yellow;
+    border: 5px soldi red;
+    border-radius: 5px;
+    color :black;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 5%;
+    text-align: center;
+}

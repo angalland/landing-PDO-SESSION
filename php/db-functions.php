@@ -185,5 +185,74 @@ function update($data){
 
         $updateStatment->execute();
     };
+
+    function formulaire($id){ 
+
+        $pricings = pricingById($id);
+
+        foreach ( $pricings as $pricing) {
+        $idPricing = $pricing['id_pricing'];
+        $name = $pricing['nom_pricing'];
+        $price = round($pricing['price'],0);
+        $sale = $pricing['sale'];
+        $bandwitch = $pricing['bandwitch'];
+        $online_space = $pricing['online_space'];
+        $support = $pricing['support'];
+        $domain = $pricing['domain'];
+        $hidden_fees = $pricing['hidden_fees'];
+        }
+        
+        ?><div class="articlePricing">
+            <form action='admin.php' method='post'>
+
+                <input type='hidden' name='id_pricing' value='<?=$idPricing?>'>
+               
+                <div>
+                <label for='nom_pricing'>Name</label>
+                <input type='text' id='nom_pricing' name='nom_pricing' value='<?= $name;?>'>
+                </div>
+
+                <div>
+                <label for='price'>Price</label>
+                <input type='number' id='price' name='price' value='<?= $price;?>'>
+                </div>
+
+                <div>
+                <label for='sale'>Sale</label>
+                <input type='number' id='sale' name='sale' min='0' max="100" step="5" value='<?= $sale;?>'>
+                </div>
+
+                <div>
+                <label for='bandwitch'>Bandwidth</label>
+                <input type='number' id='bandwitch' name='bandwitch' min='0' max='50' value='<?= $bandwitch;?>'>
+                </div>
+
+                <div>
+                <label for='online_space'>OnlineSpace</label>
+                <input  id='online_space' name='online_space' min='0' value='<?= $online_space;?>'>
+                </div>
+
+                <div>
+                <label for='support'>Support</label>
+                <input type='checkbox' name='support' <?php if ($support == 1) echo 'checked';?>>
+                </div>
+
+                <div>
+                <label for='domain'>Domain</label>
+                <input type='number' id='domain' name='domain' min='0' value='<?php echo $domain;?>'>
+                </div>
+
+                <div>
+                <label for='hidden_fees'>Hidden fees</label>
+                <input type='checkbox' name='hidden_fees' <?php if ($hidden_fees == 1) echo 'checked';?>>
+                </div><?php
+               
+                ?>
+                <div id='divUpdate'>
+                <input type='submit' name='submit' value='update' id='updateForm'>
+                </div>
+            </form>
+        </div><?php          
+        }?> 
     
     ?>

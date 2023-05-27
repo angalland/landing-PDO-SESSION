@@ -38,7 +38,7 @@
                 $id = $pricing['id_pricing'];
                 echo formulaire($id);
                 if (isset($_POST['submit'])){               
-                    echo update($id);
+                    echo update();
                  }; 
             }
                 

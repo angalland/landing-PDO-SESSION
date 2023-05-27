@@ -120,11 +120,7 @@
                     echo $_SESSION['alert'];  
                     unset($_SESSION['alert']);   
                 };?></p>
-            </div><?php
-            // var_dump($_POST['submit']);
-            // var_dump($_SESSION['datas']);
-
-            ?>
+            </div>           
         </main>
     </section>
 </body>

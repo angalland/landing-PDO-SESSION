@@ -173,8 +173,8 @@ function update($data){
                 
     $updateStatment = $db->prepare($sqlQuery);
 
-    $data['support'] = 1 ? false : 0;
-    $data['hidden_fees'] = 1 ? false : 0;
+    // $data['support'] = $data['support'] == "true" ? 1 : 0;
+    // $data['hidden_fees'] = $data['hidden_fees'] == "true" ? 1 : 0;
     
         $updateStatment->bindParam("id", $data['id_pricing']);
         $updateStatment->bindParam("nom_pricing", $data['nom_pricing']);

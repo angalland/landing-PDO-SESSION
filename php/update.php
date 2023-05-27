@@ -21,8 +21,14 @@
 </head>
 <body>
     <?php
-    // session_start();
+    if (session_id() == "")
+	session_start();
     require_once "db-functions.php";
+	foreach($_SESSION["errors"] as $error) {
+		if ($error != false) {
+			echo "<p style=\"margin:5px;padding:20px;color:#FF3333;background:#F8D7DA;border-left:solid #FF5555\">" . $error . "</p>";
+		}
+	}
     ?>
 
     <section id="pricing">
@@ -55,7 +61,7 @@
             $domain = $pricing['domain'];
             $hidden_fees = $pricing['hidden_fees'];
             }
-            // var_dump($idPricing);
+            
             ?><div class="articlePricing">
                 <form action='admin.php' method='post'>
 
@@ -83,15 +89,12 @@
 
                     <div>
                     <label for='online_space'>OnlineSpace</label>
-                    <input  id='online_space' name='online_space' min='0' value='<?= $online_space?>'>
+                    <input  id='online_space' name='online_space' min='0' value='<?= $online_space;?>'>
                     </div>
 
                     <div>
                     <label for='support'>Support</label>
-                    <select id='support' name='support'>
-                    <option value='true'>true</option>
-                    <option value='false'>false</option>
-                    </select>
+                    <input type='checkbox' name='support' <?php if ($support == 1) echo 'checked';?>>
                     </div>
 
                     <div>
@@ -101,10 +104,7 @@
 
                     <div>
                     <label for='hidden_fees'>Hidden fees</label>
-                    <select id='hidden_fees' name='hidden_fees'>
-                        <option value='true'>true</option>
-                        <option value='false'>false</option>
-                    </select>
+					<input type='checkbox' name='hidden_fees' <?php if ($hidden_fees == 1) echo 'checked';?>>
                     </div><?php
                    
                     ?>

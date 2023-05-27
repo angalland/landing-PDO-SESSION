@@ -36,11 +36,9 @@
         $pricings = pricing();
             foreach ($pricings as $pricing){
                 $id = $pricing['id_pricing'];
-                echo formulaire($id);
-                if (isset($_POST['submit'])){               
-                    echo update();
+                 formulaire($id);
                  }; 
-            }
+            
                 
         function formulaire($id){ 
 
@@ -124,7 +122,7 @@
                 };?></p>
             </div><?php
             // var_dump($_POST['submit']);
-            var_dump($_SESSION['datas']);
+            // var_dump($_SESSION['datas']);
 
             ?>
         </main>

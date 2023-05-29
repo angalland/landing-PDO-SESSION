@@ -252,6 +252,12 @@ function update($data){
                 <input type='submit' name='submit' value='update' id='updateForm'>
                 </div>
             </form>
+            <form action='admin.php' method='post'>
+            <input type='hidden' name='id_pricing' value='<?=$idPricing?>'>
+                <div id='divUpdate'>
+                    <input type='submit' name='submitDelete' value='Delete form' id='updateForm'>
+                </div>
+            </form>
         </div><?php          
         }?> 
 <?php
@@ -283,6 +289,20 @@ function create($data){
         $updateStatment->bindParam("hidden_fees", $data['hidden_fees']);
 
         $updateStatment->execute();
+}
+
+function delete($data){
+    $db = connexion();
+
+    $sqlQuery = 'DELETE FROM pricing 
+                WHERE id_pricing = :id
+                ';
+                
+    $updateStatment = $db->prepare($sqlQuery);
+   
+    $updateStatment->bindParam("id", $data['id_pricing']);
+
+    $updateStatment->execute();
 }
 
 ?>

@@ -28,6 +28,21 @@ if(isset($_POST['submit'])){
     header("Location:update.php");
 }
 
+if(isset($_POST['submitDelete'])){
+
+  $datas = [];
+  $_SESSION["errors"] = [];
+
+  $_SESSION["errors"][] = ($datas['id_pricing'] = filter_input(INPUT_POST, "id_pricing", FILTER_VALIDATE_INT)) ? false : "Id_pricing non reconnue";
+
+  if (!empty($_SESSION["errors"])){
+    header("Location:update.php");
+  }
+
+  delete($datas);
+
+  header("Location:../index.php");
+}
 
 if(isset($_POST['submitCreate'])){
 

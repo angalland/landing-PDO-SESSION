@@ -73,7 +73,7 @@ width: 45%;
 display: flex;
 flex-direction: column;
 min-height: 83px;
-margin-top: 25px;
+margin-top: 10px;
 }
 
 form div > input, form div > select {
@@ -123,3 +123,4 @@ form div > label{
     margin: 5%;
     text-align: center;
 }
+

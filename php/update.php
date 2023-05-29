@@ -51,5 +51,3 @@
     </section>
 </body>
 </html>
-
-<form action='update.php?action=<?= $idPricing ?>' method='post'>

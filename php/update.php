@@ -52,7 +52,13 @@
                     echo $_SESSION['message'];
                     unset($_SESSION['message']);
                 };?>
-            </div> 
+            </div>
+            <div class='alert'><?php       
+                        if (isset($_SESSION['delete'])){
+                            echo $_SESSION['delete'];
+                            unset($_SESSION['delete']);
+                        };?>
+                    </div>   
         </main>
     </section>
 </body>

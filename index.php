@@ -46,14 +46,8 @@
                         $id = $pricing['id_pricing'];
                         echo donneePricing($id);
                     }
-
                     ?>
-                    <div class='alert'><?php       
-                        if (isset($_SESSION['delete'])){
-                            echo $_SESSION['delete'];
-                            unset($_SESSION['delete']);
-                        };?>
-                    </div>  
+
                    
                 </main>
             </section>

@@ -91,6 +91,11 @@
                 </div>
             </form>
         </div>
+        <div class='alert'><?php       
+                if (isset($_SESSION['message'])){
+                    echo $_SESSION['message'];
+                    unset($_SESSION['message']);
+                };?>
         
         </main>
     </section>

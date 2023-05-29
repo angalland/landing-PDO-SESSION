@@ -254,5 +254,39 @@ function update($data){
             </form>
         </div><?php          
         }?> 
-    
-    ?>
+<?php
+
+function create(){
+    $db = connexion();
+    $sqlQuery = 'INSERT INTO pricing 
+                (nom_pricing, price, sale, bandwitch, online_space, support, domain, hidden_fees)
+                VALUES (:nom_pricing,
+                        :price,
+                        :sale,
+                        :bandwitch,
+                        :online_space,
+                        :support,
+                        :domain, 
+                        :hidden_fees)';
+                
+    $updateStatment = $db->prepare($sqlQuery);
+   
+        $updateStatment->bindParam("id", $data['id_pricing']);
+        $updateStatment->bindParam("nom_pricing", $data['nom_pricing']);
+        $updateStatment->bindParam("price", $data['price']);
+        $updateStatment->bindParam("sale", $data['sale']);
+        $updateStatment->bindParam("bandwitch", $data['bandwitch']);
+        $updateStatment->bindParam("online_space", $data['online_space']);
+        $updateStatment->bindParam("support", $data['support']);
+        $updateStatment->bindParam("domain", $data['domain']);
+        $updateStatment->bindParam("hidden_fees", $data['hidden_fees']);
+
+        $updateStatment->execute();
+}
+
+?>
+INSERT INTO pricing (nom_pricing, price, sale, bandwitch, online_space, support, domain, hidden_fees) -- insere des données dans le tableau
+VALUES 
+    ('Starter', 9, null, 1, '500MB', 0, 1, 0),
+    ('Advanced', 19, 20, 2, '1GB', 1, 3, 0),
+    ('Professional', 29, null, 3, '2GB', 1, 'Unlimited', 0);

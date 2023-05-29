@@ -268,14 +268,14 @@ function create($data){
 
     $sqlQuery = 'INSERT INTO pricing 
                 (nom_pricing, price, sale, bandwitch, online_space, support, domain, hidden_fees)
-                VALUES (nom_pricing = :nom_pricing,
-                        price = :price,
-                        sale = :sale,
-                        bandwitch = :bandwitch,
-                        online_space = :online_space,
-                        support = :support,
-                        domain = :domain, 
-                        hidden_fees = :hidden_fees)';
+                VALUES (:nom_pricing,
+                        :price,
+                        :sale,
+                        :bandwitch,
+                        :online_space,
+                        :support,
+                        :domain, 
+                        :hidden_fees)';
                 
     $updateStatment = $db->prepare($sqlQuery);
    

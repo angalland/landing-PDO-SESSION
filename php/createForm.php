@@ -21,16 +21,16 @@
 </head>
 <body>
     <?php
-    // if (session_id() == "")
-	// session_start();
-    // require_once "db-functions.php";
-	// if (isset($_SESSION["errors"])){
-	// foreach($_SESSION["errors"] as $error) {
-	// 	if ($error != false) {
-	// 		echo $alert = "<p style=\"margin:5px;padding:20px;color:#FF3333;background:#F8D7DA;border-left:solid #FF5555\">" . $error . "</p>";
-	// 		unset($alert);
-	// 	}
-	// }}
+    if (session_id() == "")
+	session_start();
+    require_once "db-functions.php";
+	if (isset($_SESSION["errors"])){
+	foreach($_SESSION["errors"] as $error) {
+		if ($error != false) {
+			echo $alert = "<p style=\"margin:5px;padding:20px;color:#FF3333;background:#F8D7DA;border-left:solid #FF5555\">" . $error . "</p>";
+			unset($alert);
+		}
+	}}
     ?>
 
     <section id="pricing">
@@ -87,7 +87,7 @@
                
                 ?>
                 <div id='divUpdate'>
-                <input type='submit' name='submit' value='Create' id='updateForm'>
+                <input type='submit' name='submitCreate' value='Create' id='updateForm'>
                 </div>
             </form>
         </div>

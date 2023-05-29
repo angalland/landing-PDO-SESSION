@@ -249,7 +249,7 @@ function update($data){
                
                 ?>
                 <div id='divUpdate'>
-                <input type='submit' name='submit' value='update' id='updateForm'>
+                <input type='submit' name='submitUpdate' value='update' id='updateForm'>
                 </div>
             </form>
             <form action='admin.php' method='post'>
@@ -292,6 +292,7 @@ function create($data){
 }
 
 function delete($data){
+
     $db = connexion();
 
     $sqlQuery = 'DELETE FROM pricing 

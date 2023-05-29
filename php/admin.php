@@ -4,7 +4,7 @@ if (session_id() == "")
   session_start();
 require_once('db-functions.php');
 
-if(isset($_POST['submit'])){
+if(isset($_POST['submitUpdate'])){
 
     $datas = [];
     $_SESSION["errors"] = [];

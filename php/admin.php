@@ -24,6 +24,8 @@ if(isset($_POST['submitUpdate'])){
     }
 
     update($datas);
+
+    $_SESSION['message'] = 'Votre formulaire '.$datas['nom_pricing'].' a bien été modifié !';
       
     header("Location:update.php");
 }
@@ -40,6 +42,8 @@ if(isset($_POST['submitDelete'])){
   }
 
   delete($datas);
+
+  $_SESSION['delete'] = 'Votre formulaire a bien été supprimé !';
 
   header("Location:../index.php");
 }

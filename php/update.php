@@ -27,9 +27,9 @@
 	if (isset($_SESSION["errors"])){
 	foreach($_SESSION["errors"] as $error) {
 		if ($error != false) {
-			echo $alert = "<p style=\"margin:5px;padding:20px;color:#FF3333;background:#F8D7DA;border-left:solid #FF5555\">" . $error . "</p>";
-			unset($alert);
+			echo $alert = "<p style=\"margin:5px;padding:20px;color:#FF3333;background:#F8D7DA;border-left:solid #FF5555\">" . $error . "</p>";			
 		}
+        unset($_SESSION["errors"]);
 	}}
     ?>
 
@@ -45,8 +45,14 @@
             foreach ($pricings as $pricing){
                 $id = $pricing['id_pricing'];
                  formulaire($id);
-                 };                
+                 }; 
         ?>
+            <div class='alert'><?php       
+                if (isset($_SESSION['message'])){
+                    echo $_SESSION['message'];
+                    unset($_SESSION['message']);
+                };?>
+            </div> 
         </main>
     </section>
 </body>

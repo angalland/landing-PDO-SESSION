@@ -257,8 +257,8 @@ function update($data){
                 <div id='divUpdate'>
                     <input type='submit' name='submitDelete' value='Delete form' id='updateForm'>
                 </div>
-            </form>
-        </div><?php          
+            </form>           
+            </div><?php          
         }?> 
 <?php
 

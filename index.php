@@ -23,6 +23,8 @@
 
             <!-- On relie index.php aux autre fichier.php -->
             <?php
+            if (session_id() == "")
+            session_start();
             require_once('php/db-functions.php');
             ?>
 
@@ -46,6 +48,12 @@
                     }
 
                     ?>
+                    <div class='alert'><?php       
+                        if (isset($_SESSION['delete'])){
+                            echo $_SESSION['delete'];
+                            unset($_SESSION['delete']);
+                        };?>
+                    </div>  
                    
                 </main>
             </section>

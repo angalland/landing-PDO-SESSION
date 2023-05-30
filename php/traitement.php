@@ -23,13 +23,13 @@ if(isset($_POST['submitUpdate'])){
     $datas['hidden_fees'] = isset($_POST['hidden_fees']) ? 1 : 0;
     
     if (!empty($_SESSION['errors'])){
-        header("Location:../index.php");
+        header("Location:../admin.php");
     } else {
       update($datas);
 
     $_SESSION['message'] = 'Votre formulaire '.$datas['nom_pricing'].' a bien été modifié !';
       
-    header("Location:../index.php");
+    header("Location:../admin.php");
     }
 }
 
@@ -41,14 +41,14 @@ if(isset($_POST['submitDelete'])){
   $_SESSION["errors"][] = ($datas['id_pricing'] = filter_input(INPUT_POST, "id_pricing", FILTER_VALIDATE_INT)) ? false : "Id_pricing non reconnue";
 
   if (!empty($_SESSION["errors"])){
-    header("Location:update.php");
+    header("Location:../admin.php");
   }
 
   delete($datas);
 
   $_SESSION['delete'] = 'Votre formulaire a bien été supprimé !';
 
-  header("Location:../index.php");
+  header("Location:../admin.php");
 }
 
 if(isset($_POST['submitCreate'])){

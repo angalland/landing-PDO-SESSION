@@ -50,50 +50,6 @@
                     }
                     ?>
                 </main>
-            </section>
-
-            <section class='pricing'>
-
-                <header id="headerPricing">
-                    <h2>Update Pricing</h2>
-                </header>
-
-                <main class="mainPricing">
-                    <?php
-                    $pricings = pricing();
-                    foreach ($pricings as $pricing){
-                    $id = $pricing['id_pricing'];
-                    formulaire($id);
-                    }; 
-                    ?>
-
-                    <div class='alert'>
-                        <?php       
-                        if (isset($_SESSION['message'])){
-                            echo $_SESSION['message'];
-                            unset($_SESSION['message']);
-                        };
-                        ?>
-                    </div>
-                    
-                    <?php
-                        if (isset($_SESSION["errors"])){
-	                        foreach($_SESSION["errors"] as $error) {
-		                        if ($error != false) {
-			                        echo $alert = "<p class='errors'>" . $error . "</p>";			
-		                        }
-                            unset($_SESSION["errors"]);
-	                        }
-                        };
-                    ?>
-
-                    <div class='alert'><?php       
-                        if (isset($_SESSION['delete'])){
-                            echo $_SESSION['delete'];
-                            unset($_SESSION['delete']);
-                        };?>
-                    </div>   
-                </main>
-            </section>
+            </section>           
         </body>
     </html>

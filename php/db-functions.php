@@ -203,7 +203,7 @@ function update($data){
         }
         
         ?><div class="articlePricing">
-            <form action='php/admin.php' method='post'>
+            <form action='php/traitement.php' method='post'>
 
                 <input type='hidden' name='id_pricing' value='<?=$idPricing?>'>
                
@@ -252,7 +252,7 @@ function update($data){
                 <input type='submit' name='submitUpdate' value='update' id='updateForm'>
                 </div>
             </form>
-            <form action='admin.php' method='post'>
+            <form action='php/traitement.php' method='post'>
             <input type='hidden' name='id_pricing' value='<?=$idPricing?>'>
                 <div id='divUpdate'>
                     <input type='submit' name='submitDelete' value='Delete form' id='updateForm'>

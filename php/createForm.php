@@ -41,7 +41,7 @@
 
         <main class="mainPricing">
         <div class="articlePricing">
-            <form action='admin.php' method='post'>
+            <form action='traitement.php' method='post'>
 
                 <input type='hidden' name='id_pricing'>
                

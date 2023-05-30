@@ -68,14 +68,14 @@ if(isset($_POST['submitCreate'])){
   $datas['hidden_fees'] = isset($_POST['hidden_fees']) ? 1 : 0;
 
   if (!empty($_SESSION["errors"])){
-    header("Location:createForm.php");
+    header("Location:../admin.php");
   }
 
   create($datas);
 
   $_SESSION['message'] = 'Votre formulaire '.$datas['nom_pricing'].' a bien été crée !';
 
-  header("Location:createForm.php");
+  header("Location:../admin.php");
 
 }
 ?>

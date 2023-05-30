@@ -133,5 +133,14 @@ form div > label{
     font-weight: bold;
 }
 
+.mainUpdate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5%;
+    padding-bottom: 5%;
+}
 
 

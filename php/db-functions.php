@@ -291,6 +291,67 @@ function create($data){
         $updateStatment->execute();
 }
 
+function divCreate(){
+    ?>
+
+    <div class="articlePricing">
+        <form action='php/traitement.php' method='post'>
+
+            <input type='hidden' name='id_pricing'>
+           
+            <div>
+            <label for='nom_pricing'>Name</label>
+            <input type='text' id='nom_pricing' name='nom_pricing'>
+            </div>
+
+            <div>
+            <label for='price'>Price</label>
+            <input type='number' id='price' name='price'>
+            </div>
+
+            <div>
+            <label for='sale'>Sale</label>
+            <input type='number' id='sale' name='sale' min='0' max="100" step="5">
+            </div>
+
+            <div>
+            <label for='bandwitch'>Bandwidth</label>
+            <input type='number' id='bandwitch' name='bandwitch' min='0' max='50'>
+            </div>
+
+            <div>
+            <label for='online_space'>OnlineSpace</label>
+            <input  id='online_space' name='online_space' min='0'>
+            </div>
+
+            <div>
+            <label for='support'>Support</label>
+            <input type='checkbox' name='support'>
+            </div>
+
+            <div>
+            <label for='domain'>Domain</label>
+            <input type='number' id='domain' name='domain' min='0'>
+            </div>
+
+            <div>
+            <label for='hidden_fees'>Hidden fees</label>
+            <input type='checkbox' name='hidden_fees'>
+            </div><?php
+           
+            ?>
+            <div id='divUpdate'>
+            <input type='submit' name='submitCreate' value='Create' id='updateForm'>
+            </div>
+        </form>
+    </div>
+    <div class='alert'><?php       
+            if (isset($_SESSION['message'])){
+                echo $_SESSION['message'];
+                unset($_SESSION['message']);
+            };
+};
+
 function delete($data){
 
     $db = connexion();

@@ -7,7 +7,6 @@
 
             <title>Admin</title>
 
-            <link rel="stylesheet" href="css/style.css">
             <link rel="stylesheet" href="css/update_style.css" />
 
             <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,15 +41,6 @@
                             formulaire($id);
                         }; 
                     ?>
-
-                    <div class='alert'>
-                        <?php       
-                            if (isset($_SESSION['message'])){
-                                echo $_SESSION['message'];
-                                unset($_SESSION['message']);
-                            };
-                        ?>
-                    </div>
                     
                     <?php
                         if (isset($_SESSION["errors"])){
@@ -71,6 +61,29 @@
                             };
                         ?>
                     </div>   
+                </main>
+            </section>
+
+            <section class="pricing">
+
+                <header id="headerPricing">
+                    <h2>Create Pricing</h2>
+                </header>
+
+                <main class="mainUpdate">
+
+                    <?php
+                        divCreate();
+                    ?>
+
+                    <div class='alert'>
+                        <?php       
+                            if (isset($_SESSION['message'])){
+                                echo $_SESSION['message'];
+                                unset($_SESSION['message']);
+                            };
+                        ?>
+                    </div>
                 </main>
             </section>
         </body>

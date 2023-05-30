@@ -193,6 +193,28 @@ function countJoin($id){
 
 }
 
+function addEmail($data){
+     // se connecte a la base de donnée
+     $db = connexion();
+
+     // requete sql
+     $sqlQuery = 'INSERT INTO email_table (email)
+                  VALUES (
+                         :email
+                         )';   
+                  
+ 
+     //Transforme la requete sql en un objet pdo pret a etre executer 
+     $updateStatment = $db->prepare($sqlQuery);
+    
+     // lie les parametre de la requete aux variables du tableaux $data saisie en paramettre de la fonction
+     $updateStatment->bindParam("email", $data['email']);
+ 
+     // execute la requette
+     $updateStatment->execute();
+
+}
+
 // modifie les donnée dans la base de donnée avec la variable saisie en paramettre
 function update($data){
     // se connecte a la base de donnée

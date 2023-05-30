@@ -95,7 +95,101 @@
                         foreach ($pricings as $pricing){
                             $id = $pricing['id_pricing'];
                             formulaire($id);
-                        }; 
+                        };
+
+                        //crée un formulaire en fonction de l'id dans la base de donnée pour récupéré les données saisie par l'utilisateur, pour soit modifié le formulaire, soit le supprimer.
+                            function formulaire($id){ 
+                                // récupére les donnée en fonction de l'id
+                                $pricings = pricingById($id);
+
+                                // assigne ces données a des variables
+                                foreach ( $pricings as $pricing) {
+                                    $idPricing = $pricing['id_pricing'];
+                                    $name = $pricing['nom_pricing'];
+                                    $price = round($pricing['price'],0);
+                                    $sale = $pricing['sale'];
+                                    $bandwitch = $pricing['bandwitch'];
+                                    $online_space = $pricing['online_space'];
+                                    $support = $pricing['support'];
+                                    $domain = $pricing['domain'];
+                                    $hidden_fees = $pricing['hidden_fees'];
+                                }
+                                ?>
+
+                                <!-- crée le formulaire -->
+                                <div class="articlePricing">
+                                    <!-- formulaire envoyé a traitement.php par post -->
+                                    <form action='php/traitement.php' method='post'>
+
+                                        <!-- récupere la valeur de l'id, non visible par l'utilisateur -->
+                                        <input type='hidden' name='id_pricing' value='<?=$idPricing?>'>
+
+                                        <!-- affiche le nom de la base de donnée et récupere le nom saisie par l'utilisateur -->
+                                        <div>
+                                            <label for='nom_pricing'>Name</label>
+                                            <input type='text' id='nom_pricing' name='nom_pricing' value='<?= $name;?>'>
+                                        </div>
+                                            
+                                        <!-- affiche le prix de la base de donnée et récupere le prix saisie par l'utilisateur -->
+                                        <div>
+                                            <label for='price'>Price</label>
+                                            <input type='number' id='price' name='price' value='<?= $price;?>'>
+                                        </div>
+
+                                        <!-- affiche le sale de la base de donnée et récupere le sale saisie par l'utilisateur -->
+                                        <div>
+                                            <label for='sale'>Sale</label>
+                                            <input type='number' id='sale' name='sale' min='0' max="100" step="5" value='<?= $sale;?>'>
+                                        </div>
+
+                                        <!-- affiche bandwitch de la base de donnée et récupere bandwitch saisie par l'utilisateur -->
+                                        <div>
+                                            <label for='bandwitch'>Bandwidth</label>
+                                            <input type='number' id='bandwitch' name='bandwitch' min='0' max='50' value='<?= $bandwitch;?>'>
+                                        </div>
+
+                                        <!-- affiche online_space de la base de donnée et récupere online_space saisie par l'utilisateur -->
+                                        <div>
+                                            <label for='online_space'>OnlineSpace</label>
+                                            <input  id='online_space' name='online_space' min='0' value='<?= $online_space;?>'>
+                                        </div>
+
+                                        <!-- affiche support de la base de donnée et récupere support saisie par l'utilisateur sous forme de checkbox qui renvoie 'on' si cocher et null si vide-->
+                                        <div>
+                                            <label for='support'>Support</label>
+                                            <input type='checkbox' name='support' <?php if ($support == 1) echo 'checked';?>>
+                                        </div>
+
+                                        <!-- affiche domain de la base de donnée et récupere domain saisie par l'utilisateur -->
+                                        <div>
+                                            <label for='domain'>Domain</label>
+                                            <input type='number' id='domain' name='domain' min='0' value='<?php echo $domain;?>'>
+                                        </div>
+
+                                        <!-- affiche hidden_fees de la base de donnée et récupere hidden_fees saisie par l'utilisateur sous forme de checkbox qui renvoie 'on' si cocher et null si vide-->
+                                        <div>
+                                            <label for='hidden_fees'>Hidden fees</label>
+                                            <input type='checkbox' name='hidden_fees' <?php if ($hidden_fees == 1) echo 'checked';?>>
+                                        </div>
+                                        
+                                        <!-- bouton d'envoie -->
+                                        <div id='divUpdate'>
+                                            <input type='submit' name='submitUpdate' value='update' id='updateForm'>
+                                        </div>
+                                    </form>
+
+                                    <!-- boutton de suppression du formulaire -->
+                                    <form action='php/traitement.php' method='post'>
+                                        <!-- récupere l'id du formulaire -->
+                                        <input type='hidden' name='id_pricing' value='<?=$idPricing?>'>
+
+                                        <div id='divUpdate'>
+                                            <input type='submit' name='submitDelete' value='Delete form' id='updateForm'>
+                                        </div>
+                                    </form>           
+                                </div>
+                            <?php          
+                            } 
                     ?>
                     
                 </main>
@@ -112,6 +206,70 @@
                     <?php
                         // fonction divCreate() qui crée un formulaire
                         divCreate();
+
+                        // Crée un formulaire qui ajoutera une ligne dans la base de donnée via la fonction create()
+                        function divCreate(){
+                            ?>
+
+                            <div class="articlePricing">
+                                <form action='php/traitement.php' method='post'>
+
+                                    <input type='hidden' name='id_pricing'>
+                                
+                                    <div>
+                                    <label for='nom_pricing'>Name</label>
+                                    <input type='text' id='nom_pricing' name='nom_pricing'>
+                                    </div>
+
+                                    <div>
+                                    <label for='price'>Price</label>
+                                    <input type='number' id='price' name='price'>
+                                    </div>
+
+                                    <div>
+                                    <label for='sale'>Sale</label>
+                                    <input type='number' id='sale' name='sale' min='0' max="100" step="5">
+                                    </div>
+
+                                    <div>
+                                    <label for='bandwitch'>Bandwidth</label>
+                                    <input type='number' id='bandwitch' name='bandwitch' min='0' max='50'>
+                                    </div>
+
+                                    <div>
+                                    <label for='online_space'>OnlineSpace</label>
+                                    <input  id='online_space' name='online_space' min='0'>
+                                    </div>
+
+                                    <div>
+                                    <label for='support'>Support</label>
+                                    <input type='checkbox' name='support'>
+                                    </div>
+
+                                    <div>
+                                    <label for='domain'>Domain</label>
+                                    <input type='number' id='domain' name='domain' min='0'>
+                                    </div>
+
+                                    <div>
+                                    <label for='hidden_fees'>Hidden fees</label>
+                                    <input type='checkbox' name='hidden_fees'>
+                                    </div><?php
+                                
+                                    ?>
+                                    <div id='divUpdate'>
+                                    <input type='submit' name='submitCreate' value='Create' id='updateForm'>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- affiche un message de réussite si le formulaire est créer -->
+                            <div class='alert'><?php       
+                                    if (isset($_SESSION['message'])){
+                                        echo $_SESSION['message'];
+                                        unset($_SESSION['message']);
+                                    };
+                        };
                     ?>
 
                     

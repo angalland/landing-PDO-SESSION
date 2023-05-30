@@ -81,6 +81,126 @@
                         $id = $pricing['id_pricing'];
                         donneePricing($id);
                     }
+
+                    function donneePricing($id){
+
+                        $pricings = pricingById($id); // fait appelle a la fonction idPricing avec $id donnée en argument de la fonction et la stocke dans $pricings
+                          
+                         foreach ($pricings as $pricing){ // On fait une boucle pour lire la variable pricings car la fonction pricing nous renvoie un tableau
+                     
+                             // On assigne les données récupérées dans des variables
+                             $id_pricing = $pricing['id_pricing'];
+                             $nom_pricing = $pricing['nom_pricing'];
+                             $price = $pricing['price'];
+                             $sale = $pricing['sale'];
+                             $bandwitch = $pricing['bandwitch'];
+                             $online_space = $pricing['online_space'];
+                             $support = $pricing['support'];
+                             $domain = $pricing['domain'];
+                             $hidden_fees = $pricing['hidden_fees'];?>
+                     
+                                 <!-- On crée la div qui renvoie les données -->
+                                 <div class="articlePricing">
+                                     <h4 class="h4Pricing">
+                                         <?= $nom_pricing ?> <!-- on affiche le nom pricing -->                         
+                                     </h4> 
+                                     <p class="pPricing"><span class="spanPricing">$</span><strong class="strongArticle"><?=
+                                          round($price, 0);?></strong>/month</p><?php // on affiche le prix pricing avec la fonction round qui arrondit a 0 chiffres apres la virgule
+                                     
+                                     if ($bandwitch != null){?> <!-- si la donnée bandwitch existe-->
+                                         <i id="iPricing" class="fa-regular fa-circle-check" style="color: #23b35a;"></i>
+                                         <p class="pArticlePricing">Bandwidht :</p>
+                                         <p class="p2ArticlePricing"><?=
+                                          $bandwitch;?>GB</p><?php // On affiche la donnée bandwitch
+                                     } else {?> <!-- sinon -->
+                                         <i id="iPricing" class="fa-regular fa-circle-xmark" style="color: #dd0e23;"></i>
+                                         <p class="pArticlePricing">bandwitch :</p>
+                                         <p class="p2ArticlePricing">No</p><?php
+                                     }
+                                     
+                                     if ($online_space != null){ // si online_space existe
+                                         if ($online_space >= 1000){ // détermine l'unité de online-space celon ca grandeur
+                                             $online_space_unit = 'GB'; // >= 1000 -> GB
+                                             $online_space = $online_space / 1000; // on divise online_space pour le faire concorder a l'unité
+                                         ?> 
+                                         <i id="iPricing" class="fa-regular fa-circle-check" style="color: #23b35a;"></i>
+                                         <p class="pArticlePricing">Onlinespace :</p>
+                                         <p class="p2ArticlePricing"><?= $online_space;?><?= $online_space_unit;?></p><?php
+                                         } else {
+                                             $online_space_unit = 'MB';?> <!-- si online_space <1000 alors unité MB -->
+                                             <i id="iPricing" class="fa-regular fa-circle-check" style="color: #23b35a;"></i>
+                                             <p class="pArticlePricing">Onlinespace :</p>
+                                             <p class="p2ArticlePricing"><?= $online_space;?><?= $online_space_unit;?></p><?php
+                                         } 
+                                     } else {?> <!-- si online_space est null-->
+                                         <i id="iPricing" class="fa-regular fa-circle-xmark" style="color: #dd0e23;"></i>
+                                         <p class="pArticlePricing">Onlinespace :</p>
+                                         <p class="p2ArticlePricing">No</p><?php
+                                     }
+                                     
+                                     if ($support != null){ //si la donnée support existe
+                                         if($pricing['support'] == 1){?> <!-- la donnée est vrai -->
+                                             <i id="iPricing" class="fa-regular fa-circle-check" style="color: #23b35a;"></i>
+                                             <p class="pArticlePricing">Support : </p>
+                                             <p class="p2ArticlePricing">Yes</p><?php
+                                         }
+                                     } else {?> <!-- si elle n'existe pas ou est fausse alors -->
+                                         <i id="iPricing" class="fa-regular fa-circle-xmark" style="color: #dd0e23;"></i>
+                                         <p class="pArticlePricing">Support :</p>
+                                         <p class="p2ArticlePricing">No</p><?php
+                                     }
+                     
+                                     if ($domain != null){ //<!-- si la donnée domain existe -->
+                                         if ($domain < 5){?> <!-- si elle inférieure a 5 -->
+                                         <i id="iPricing" class="fa-regular fa-circle-check" style="color: #23b35a;"></i>
+                                         <p class="pArticlePricing">Domain :</p>
+                                         <p class="p2ArticlePricing"><?= $domain;?></p><?php
+                                         } else {?> <!-- si >5 affiche unlimited -->
+                                             <i id="iPricing" class="fa-regular fa-circle-check" style="color: #23b35a;"></i>
+                                             <p class="pArticlePricing">Domain :</p>
+                                             <p class="p2ArticlePricing">Unlimited</p><?php  
+                                         }
+                                     } else {?> <!-- si elle est null -->
+                                         <i id="iPricing" class="fa-regular fa-circle-xmark" style="color: #dd0e23;"></i>
+                                         <p class="pArticlePricing">Domain :</p>
+                                         <p class="p2ArticlePricing">No</p><?php
+                                     }
+                                     
+                                     if ($hidden_fees != null){ // si la donnée hidden_fees existe
+                                         if ($pricing['hidden_fees'] == 1){?> <!-- la donnée est vrai -->
+                                             <i id="iPricing" class="fa-regular fa-circle-check" style="color: #23b35a;"></i>
+                                             <p class="pArticlePricing">Hidden Fees :</p>
+                                             <p class="p2ArticlePricing">Yes</p><?php
+                                         }
+                                     } else {?> <!-- si la donnée n'existe pas ou est fausse -->
+                                         <i id="iPricing" class="fa-regular fa-circle-xmark" style="color: #dd0e23;"></i>
+                                         <p class="pArticlePricing">Hidden fees :</p>
+                                         <p class="p2ArticlePricing">No</p><?php
+                                     }
+                     
+                                     if ($pricing['sale'] != null){?> <!-- si la donnée sale existe alors affiche la div sinon ne l'affiche pas -->                              
+                                         <div class="divArticlePricing">
+                                             <p class="pdivArticlePricing"><?= $sale;?>% sale</p>
+                                         </div><?php
+                                     }?>
+                                     
+                                     <!-- Envoie l'id et le nom du formulaire dans traitement.php avec le nom submitJoin -->
+                                     <form class="formArticlePricing" action="php/traitement.php" method="post">
+                                         <input type='hidden' name='id_pricing' value='<?=$id_pricing?>'>
+                                         <input type='hidden' name='nom_pricing' value='<?=$nom_pricing?>'>
+                                         <input class="buttonArticlePricing" type="submit" name='submitJoin' value='Join'>
+                                     </form>
+                     
+                                     <!-- Envoie l'email dans traitement.php avec le button -->
+                                     <form class="formContenair1" action="php/traitement.php" method="post">
+                                         <input type="email"  placeholder="Enter your email" name='email'>
+                                         <button class="buttonContenair1" type="submit" name='button'>SUBSCRIRE</button>
+                                     </form>
+                                 </div>              
+                             <?php
+                     
+                         }                       
+                     };
                     ?>
 
                 </main>

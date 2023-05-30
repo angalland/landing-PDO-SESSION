@@ -156,7 +156,7 @@ section {
     width: 100%;
     text-align: center;
     margin-top: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .buttonArticlePricing {
@@ -196,3 +196,53 @@ section {
     font-weight: bold;
     text-align: center;
 }
+
+/* Formulaire email-------------------- */
+.formContenair1 {
+    width: 100%;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+input {
+    height: 50px;
+    width: 100%;
+    border-radius: 30px;
+    border: none; /* Supprime la bordure de input */
+}
+
+::placeholder {     /* Selectionne l'attribut placeholder */
+    padding: 10px;
+    color : black;
+    font-size: 20px;
+    opacity: 0.5;
+}
+
+input[type="email"]{
+    background-color:hsl(223, 82%, 59%); 
+}
+
+input[type="email"]:focus{ /* Selectionne l'input ayant pour attribut type="email" lorsque celui ci est selectionné au clavier */
+    font-size: 20px;
+    border: 0;
+    padding: 10px;
+    background-color:hsl(223, 82%, 59%);
+}
+
+.buttonContenair1 {
+    background-color: #1294b8;
+    height: 40px;
+    width: 140px;
+    border-radius: 30px;
+    color: white;
+    position: absolute; 
+    top: 5px;
+    right: 5px;
+    border: none;
+}
+
+.buttonContenair1:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+

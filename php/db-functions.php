@@ -154,6 +154,10 @@ function donneePricing($id){
                     <input type='hidden' name='nom_pricing' value='<?=$nom_pricing?>'>
                     <input class="buttonArticlePricing" type="submit" name='submitJoin' value='Join'>
                 </form>
+                <form class="formContenair1" action="" method="post">
+                    <input type="email"  placeholder="Enter your email">
+                    <button class="buttonContenair1" type="submit">SUBSCRIRE</button>
+                </form>
             </div>              
         <?php
 

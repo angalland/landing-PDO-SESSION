@@ -103,9 +103,9 @@ if(isset($_POST['submitJoin'])){
 
   // filtre les données pour id, si filter_input renvoie false alors crée une entré dans $_SESSION['errors]
   ($datas['id_pricing'] = filter_input(INPUT_POST, "id_pricing", FILTER_VALIDATE_INT)) ? false : $_SESSION['errorsJoin'][]='Id_pricing non reconnue';
-  ($datas['nom_pricing'] = filter_input(INPUT_POST, "id_pricing", FILTER_VALIDATE_INT)) ? false : $_SESSION['errorsJoin'][]='nom_pricing non reconnue';
+  ($datas['nom_pricing'] = filter_input(INPUT_POST, "nom_pricing", FILTER_SANITIZE_STRING)) ? false : $_SESSION['errorsJoin'][]='nom_pricing non reconnue';
 
-
+  var_dump($datas['id_pricing']);
   if (!empty($_SESSION['errorsJoin'])){   
     header("Location:../index.php");
   } else { // sinon fait la fonction 
@@ -113,7 +113,7 @@ if(isset($_POST['submitJoin'])){
     // envoie un message de confirmation
     $_SESSION['join'] = 'Vous avez bien adhérer à '.$datas['nom_pricing'].' !';
     // renvoie a admin.php 
-    // header("Location:../index.php");
+    header("Location:../index.php");
   }
 }
 

@@ -179,7 +179,7 @@ function countJoin($id){
     $updateStatment = $db->prepare($sqlQuery);
 
     // lie les parametre de la requete aux variables du tableaux $data saisie en paramettre de la fonction
-    $updateStatment->bindParam("id", $data['id_pricing']);
+    $updateStatment->bindParam("id", $id);
     $updateStatment->bindParam("count", $count);
 
     // execute la requette

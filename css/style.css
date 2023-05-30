@@ -175,3 +175,24 @@ section {
     transform: translateY(-10px);
     cursor: pointer;
 }
+
+.errors {
+    margin:5px;
+    padding:20px;
+    color:#FF3333;
+    background:#F8D7DA;
+    border-left:solid #FF5555;
+    border-radius: 5px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.alert {
+    background-color: yellow;
+    border: 5px soldi red;
+    border-radius: 5px;
+    color :black;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}

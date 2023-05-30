@@ -41,7 +41,7 @@
             ?>
                 <div class='alert'>
             <?php    
-                // envoie un message lorsque le formulaire a bien été modifier   
+                // envoie un message lorsque que l'utilisateur adhere a un formulaire   
                 if (isset($_SESSION['join'])){
                     echo $_SESSION['join'];
                     unset($_SESSION['join']);

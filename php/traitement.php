@@ -118,4 +118,21 @@ if(isset($_POST['submitJoin'])){
   }
 }
 
+if(isset($_POST['button'])){
+  $datas = [];
+  $_SESSION['errorsEmail'] = [];
+
+  ($datas['email'] = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL)) ? false : $_SESSION["errorsEmail"][] = "Votre email est incorrecte, vous devez saisir un email de type nom.prenom@hotline.com";
+
+  if (!empty($_SESSION['email'])){  // si $_SESSION['email'] est non null alors
+    header("Location:../index.php");
+  } else { // sinon fait la fonction 
+    
+    // envoie un message de confirmation
+    $_SESSION['addEmail'] = 'Votre email a bien été enregistré !';
+    // renvoie a admin.php 
+    header("Location:../index.php");
+  }
+}
+
 ?>

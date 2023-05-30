@@ -38,6 +38,14 @@
                     unset($_SESSION["errorsJoin"]); // supprime le message d'alert a chaque refresh de page
                     }
                 };
+                if (isset($_SESSION["email"])){ // Si il y a une $_SESSION[email] alors
+                    foreach($_SESSION["email"] as $error) {
+                        if ($error != false) {
+                            echo $alert = "<p class='errors'>" . $error . "</p>";	// envoie le message d'alerte		
+                        }
+                    unset($_SESSION["email"]); // supprime le message d'alert a chaque refresh de page
+                    }
+                };
             ?>
                 <div class='alert'>
             <?php    
@@ -45,6 +53,11 @@
                 if (isset($_SESSION['join'])){
                     echo $_SESSION['join'];
                     unset($_SESSION['join']);
+                };
+                // envoie un message lorsque l'utilisateur a saisie son email
+                if (isset($_SESSION['addEmail'])){
+                    echo $_SESSION['addEmail'];
+                    unset($_SESSION['addEmail']);
                 };
             ?>
             </div>

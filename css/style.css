@@ -213,13 +213,12 @@ input {
 
 ::placeholder {     /* Selectionne l'attribut placeholder */
     padding: 10px;
-    color : black;
+    color : white;
     font-size: 20px;
-    opacity: 0.5;
 }
 
 input[type="email"]{
-    background-color:hsl(223, 82%, 59%); 
+    background-color:hsl(223, 82%, 59%);
 }
 
 input[type="email"]:focus{ /* Selectionne l'input ayant pour attribut type="email" lorsque celui ci est selectionné au clavier */

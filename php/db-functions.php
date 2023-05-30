@@ -37,8 +37,9 @@ function pricingById($id){
     $sqlQuery = 
     'SELECT *
     FROM pricing
-    WHERE id_pricing = '.$id; // condition id_pricing = a l'id saisie en argument de la fonction
+    WHERE id_pricing = :id'; // condition id_pricing = a l'id saisie en argument de la fonction
     $pricingStatment = $db->prepare($sqlQuery);
+    $pricingStatment->bindParam("id", $id);
     $pricingStatment->execute();
     $pricings = $pricingStatment->fetchAll();
     return $pricings; // retourne les donnée de l'id saisie en argument de la fonction 

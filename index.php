@@ -24,9 +24,11 @@
 
             <!-- On relie index.php aux autre fichier.php -->
             <?php
-            if (session_id() == "")
-            session_start();
-            require_once('php/db-functions.php');
+                // Demarre une session si il n'en a pas déja une
+                if (session_id() == "")
+                session_start();
+                // Fait appelle au fichier db-functions
+                require_once('php/db-functions.php');
             ?>
 
             <!-- Section pricing -->
@@ -41,12 +43,12 @@
                 <!-- MAIN pricing-->
                 <main class="mainPricing">
                     
-                    <!-- Recherche des id dans la base de donnée puis boucle pour faire la fonction donneePricing sur toutes les id -->
+                    <!-- Recupere les id dans la base de donnée avec la fonction pricing() puis boucle pour faire la fonction donneePricing() sur toutes les id -->
                     <?php
                     $pricings = pricing();
                     foreach ($pricings as $pricing){
                         $id = $pricing['id_pricing'];
-                        echo donneePricing($id);
+                        donneePricing($id);
                     }
                     ?>
                 </main>

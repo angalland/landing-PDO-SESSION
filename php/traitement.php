@@ -54,10 +54,10 @@ if(isset($_POST['submitDelete'])){
 if(isset($_POST['submitCreate'])){
 
   $datas = [];
-  $_SESSION["errors"] = [];
+  $_SESSION["deleteErrors"] = [];
       
-  ($datas['nom_pricing'] = filter_input(INPUT_POST, "nom_pricing", FILTER_SANITIZE_STRING)) ? false : $_SESSION["errors"][] = "nom_pricing non reconnue";
-  ($datas['price'] = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT)) ? false : $_SESSION["errors"][] = "price non reconnue";
+  ($datas['nom_pricing'] = filter_input(INPUT_POST, "nom_pricing", FILTER_SANITIZE_STRING)) ? false : $_SESSION["deleteErrors"][] = "Vous devez saisir un nom obligatoire sans caractère spéciaux";
+  ($datas['price'] = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT)) ? false : $_SESSION["deleteErrors"][] = "Vous devez saisir un prix obligatoire, il doit être un entier positif";
 
   ($datas['sale'] = filter_input(INPUT_POST, "sale", FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min)))) ? false : $datas['sale'] = null;
   ($datas['bandwitch'] = filter_input(INPUT_POST, "bandwitch", FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min)))) ? false : $datas['bandwitch'] = null;
@@ -67,7 +67,7 @@ if(isset($_POST['submitCreate'])){
   $datas['support'] = isset($_POST['support']) ? 1 : 0;
   $datas['hidden_fees'] = isset($_POST['hidden_fees']) ? 1 : 0;
 
-  if (!empty($_SESSION["errors"])){
+  if (!empty($_SESSION["deleteErrors"])){
     header("Location:../admin.php");
   }
 

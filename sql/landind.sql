@@ -18,4 +18,4 @@ VALUES
     ('Professional', 29, null, 3, '2GB', 1, 'Unlimited', 0);
 
 ALTER TABLE pricing -- crée une nouvelle colonne count_join dans la table pricing
-ADD count_join;
+ADD count_join int DEFAULT 0; -- avec pour valeur par défault 0

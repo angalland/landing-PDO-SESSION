@@ -93,4 +93,28 @@ if(isset($_POST['submitCreate'])){
   header("Location:../admin.php");
 
 }
+
+if(isset($_POST['submitJoin'])){
+
+  // récupere les données de $_post dans $datas sous forme de tableaux
+  $datas = [];
+  // crée une $_SESSION['errors']
+  $_SESSION["errorsJoin"] = [];
+
+  // filtre les données pour id, si filter_input renvoie false alors crée une entré dans $_SESSION['errors]
+  ($datas['id_pricing'] = filter_input(INPUT_POST, "id_pricing", FILTER_VALIDATE_INT)) ? false : $_SESSION['errorsJoin'][]='Id_pricing non reconnue';
+  ($datas['nom_pricing'] = filter_input(INPUT_POST, "id_pricing", FILTER_VALIDATE_INT)) ? false : $_SESSION['errorsJoin'][]='nom_pricing non reconnue';
+
+
+  if (!empty($_SESSION['errorsJoin'])){   
+    header("Location:../index.php");
+  } else { // sinon fait la fonction 
+    countJoin($datas['id_pricing']);
+    // envoie un message de confirmation
+    $_SESSION['join'] = 'Vous avez bien adhérer à '.$datas['nom_pricing'].' !';
+    // renvoie a admin.php 
+    // header("Location:../index.php");
+  }
+}
+
 ?>

@@ -29,7 +29,25 @@
                 session_start();
                 // Fait appelle au fichier db-functions
                 require_once('php/db-functions.php');
+
+                if (isset($_SESSION["errorsJoin"])){ // Si il y a une $_SESSION['errors] alors
+                    foreach($_SESSION["errorsJoin"] as $error) {
+                        if ($error != false) {
+                            echo $alert = "<p class='errors'>" . $error . "</p>";	// envoie le message d'alerte		
+                        }
+                    unset($_SESSION["errorsJoin"]); // supprime le message d'alert a chaque refresh de page
+                    }
+                };
             ?>
+                <div class='alert'>
+            <?php    
+                // envoie un message lorsque le formulaire a bien été modifier   
+                if (isset($_SESSION['join'])){
+                    echo $_SESSION['join'];
+                    unset($_SESSION['join']);
+                };
+            ?>
+            </div>
 
             <!-- Section pricing -->
             <section class="pricing">

@@ -53,6 +53,7 @@ function donneePricing($id){
     foreach ($pricings as $pricing){ // On fait une boucle pour lire la variable pricings car la fonction pricing nous renvoie un tableau
 
         // On assigne les données récupérées dans des variables
+        $id_pricing = $pricing['id_pricing'];
         $nom_pricing = $pricing['nom_pricing'];
         $price = $pricing['price'];
         $sale = $pricing['sale'];
@@ -147,14 +148,44 @@ function donneePricing($id){
                     </div><?php
                 }?>
                 
-                <form class="formArticlePricing" action="" method="post">
-                    <button class="buttonArticlePricing" type="submit">Join Now</button>
+
+                <form class="formArticlePricing" action="php/traitement.php" method="post">
+                    <input type='hidden' name='id_pricing' value='<?=$id_pricing?>'>
+                    <input type='hidden' name='nom_pricing' value='<?=$nom_pricing?>'>
+                    <input class="buttonArticlePricing" type="submit" name='submitJoin' value='Join'>
                 </form>
             </div>              
         <?php
 
     }                       
 };
+
+// Ajoute 1 a la colonne count_join de pricing
+function countJoin($id){
+
+    $db = connexion();
+
+    $pricings = pricingById($id);
+    foreach ($pricings as $pricing){
+    $count = $pricing['count_join'];
+    $count++;
+    };
+
+    $sqlQuery = 'UPDATE pricing 
+    SET count_join = :count      
+    WHERE id_pricing = :id';
+
+    //Transforme la requete sql en un objet pdo pret a etre executer 
+    $updateStatment = $db->prepare($sqlQuery);
+
+    // lie les parametre de la requete aux variables du tableaux $data saisie en paramettre de la fonction
+    $updateStatment->bindParam("id", $data['id_pricing']);
+    $updateStatment->bindParam("count", $count);
+
+    // execute la requette
+    $updateStatment->execute();
+
+}
 
 // modifie les donnée dans la base de donnée avec la variable saisie en paramettre
 function update($data){

@@ -94,6 +94,7 @@ if(isset($_POST['submitCreate'])){
 
 }
 
+// si submitJoin a été enclenché
 if(isset($_POST['submitJoin'])){
 
   // récupere les données de $_post dans $datas sous forme de tableaux
@@ -101,12 +102,12 @@ if(isset($_POST['submitJoin'])){
   // crée une $_SESSION['errors']
   $_SESSION["errorsJoin"] = [];
 
-  // filtre les données pour id, si filter_input renvoie false alors crée une entré dans $_SESSION['errors]
+  // filtre les données pour id, nom_pricing si filter_input renvoie false alors crée une entré dans $_SESSION['errors]
   ($datas['id_pricing'] = filter_input(INPUT_POST, "id_pricing", FILTER_VALIDATE_INT)) ? false : $_SESSION['errorsJoin'][]='Id_pricing non reconnue';
   ($datas['nom_pricing'] = filter_input(INPUT_POST, "nom_pricing", FILTER_SANITIZE_STRING)) ? false : $_SESSION['errorsJoin'][]='nom_pricing non reconnue';
 
-  var_dump($datas['id_pricing']);
-  if (!empty($_SESSION['errorsJoin'])){   
+ 
+  if (!empty($_SESSION['errorsJoin'])){  // si $_SESSION['errorsJoin'] est non null alors
     header("Location:../index.php");
   } else { // sinon fait la fonction 
     countJoin($datas['id_pricing']);

@@ -160,17 +160,19 @@ function donneePricing($id){
     }                       
 };
 
-// Ajoute 1 a la colonne count_join de pricing
+// Ajoute 1 a la colonne count_join de pricing lorsqu'on click sur join
 function countJoin($id){
-
+    // se connecte a la base de donnée
     $db = connexion();
 
+    // récupère la valeur de count_join dans la table pricing en fonction de l'id et rajoute 1
     $pricings = pricingById($id);
     foreach ($pricings as $pricing){
     $count = $pricing['count_join'];
     $count++;
     };
 
+    // requete sql
     $sqlQuery = 'UPDATE pricing 
     SET count_join = :count      
     WHERE id_pricing = :id';
@@ -178,7 +180,7 @@ function countJoin($id){
     //Transforme la requete sql en un objet pdo pret a etre executer 
     $updateStatment = $db->prepare($sqlQuery);
 
-    // lie les parametre de la requete aux variables du tableaux $data saisie en paramettre de la fonction
+    // lie les parametre de la requete aux variables id et count 
     $updateStatment->bindParam("id", $id);
     $updateStatment->bindParam("count", $count);
 
@@ -223,7 +225,7 @@ function update($data){
     $updateStatment->execute();
 };
 
-    //crée un formulaire en fonction de l'id dans la base de donnée pour récupéré les données saisie par l'utilisateur, pour soit modifié le formulaire, soit le supprimer.
+//crée un formulaire en fonction de l'id dans la base de donnée pour récupéré les données saisie par l'utilisateur, pour soit modifié le formulaire, soit le supprimer.
 function formulaire($id){ 
     // récupére les donnée en fonction de l'id
     $pricings = pricingById($id);

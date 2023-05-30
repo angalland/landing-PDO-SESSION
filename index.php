@@ -30,7 +30,7 @@
                 // Fait appelle au fichier db-functions
                 require_once('php/db-functions.php');
 
-                if (isset($_SESSION["errorsJoin"])){ // Si il y a une $_SESSION['errors] alors
+                if (isset($_SESSION["errorsJoin"])){ // Si il y a une $_SESSION['errorsJoin] alors
                     foreach($_SESSION["errorsJoin"] as $error) {
                         if ($error != false) {
                             echo $alert = "<p class='errors'>" . $error . "</p>";	// envoie le message d'alerte		

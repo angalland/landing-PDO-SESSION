@@ -148,12 +148,14 @@ function donneePricing($id){
                     </div><?php
                 }?>
                 
-
+                <!-- Envoie l'id et le nom du formulaire dans traitement.php avec le nom submitJoin -->
                 <form class="formArticlePricing" action="php/traitement.php" method="post">
                     <input type='hidden' name='id_pricing' value='<?=$id_pricing?>'>
                     <input type='hidden' name='nom_pricing' value='<?=$nom_pricing?>'>
                     <input class="buttonArticlePricing" type="submit" name='submitJoin' value='Join'>
                 </form>
+
+                <!-- Envoie l'email dans traitement.php avec le button -->
                 <form class="formContenair1" action="php/traitement.php" method="post">
                     <input type="email"  placeholder="Enter your email" name='email'>
                     <button class="buttonContenair1" type="submit" name='button'>SUBSCRIRE</button>
@@ -193,6 +195,7 @@ function countJoin($id){
 
 }
 
+// fonction qui ajoute l'email dans la base de donnée
 function addEmail($data){
      // se connecte a la base de donnée
      $db = connexion();

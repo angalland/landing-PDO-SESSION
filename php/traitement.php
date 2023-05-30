@@ -118,13 +118,18 @@ if(isset($_POST['submitJoin'])){
   }
 }
 
+// si button est enclenché
 if(isset($_POST['button'])){
+  // récupere les données de $_POST dans $datas sous forme de tableaux
   $datas = [];
+  // crée une $_SESSION['errorsEmail']
   $_SESSION['errorsEmail'] = [];
 
+  // filtre les donnée de email si renvoie false crée alors une entré dans le tableau $_SESSION['errorsEmail']
   ($datas['email'] = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL)) ? false : $_SESSION["errorsEmail"][] = "Votre email est incorrecte, vous devez saisir un email de type nom.prenom@hotline.com";
 
-  if (!empty($_SESSION['email'])){  // si $_SESSION['email'] est non null alors
+
+  if (!empty($_SESSION['errorsEmail'])){  // si $_SESSION['errorsEmail'] est non null alors
     header("Location:../index.php");
   } else { // sinon fait la fonction
     addEmail($datas);   

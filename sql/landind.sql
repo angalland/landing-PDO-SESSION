@@ -16,3 +16,6 @@ VALUES
     ('Starter', 9, null, 1, '500MB', 0, 1, 0),
     ('Advanced', 19, 20, 2, '1GB', 1, 3, 0),
     ('Professional', 29, null, 3, '2GB', 1, 'Unlimited', 0);
+
+ALTER TABLE pricing -- crée une nouvelle colonne count_join dans la table pricing
+ADD count_join;

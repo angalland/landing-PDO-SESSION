@@ -37,7 +37,7 @@ h2 {
     width: 100%;
     position: relative;
     gap: 5%;
-    padding-bottom: 5%;
+    /* padding-bottom: 5%; */
 }
 
 .articlePricing {

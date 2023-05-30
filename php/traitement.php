@@ -88,7 +88,7 @@ if(isset($_POST['submitCreate'])){
   // fait appelle a la fonction create avec en argument le tableau $datas
   create($datas);
 
-  $_SESSION['message'] = 'Votre formulaire '.$datas['nom_pricing'].' a bien été crée !';
+  $_SESSION['createMessage'] = 'Votre formulaire '.$datas['nom_pricing'].' a bien été crée !';
 
   header("Location:../admin.php");
 

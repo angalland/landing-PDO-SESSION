@@ -28,7 +28,58 @@
                 session_start();
                 // relie admin a db-functions
                 require_once('php/db-functions.php');
+
+                if (isset($_SESSION["errors"])){ // Si il y a une $_SESSION['errors] alors
+                    foreach($_SESSION["errors"] as $error) {
+                        if ($error != false) {
+                            echo $alert = "<p class='errors'>" . $error . "</p>";	// envoie le message d'alerte		
+                        }
+                    unset($_SESSION["errors"]); // supprime le message d'alert a chaque refresh de page
+                    }
+                };
+            ?>
+            <div class='alert'>
+            <?php    
+                // envoie un message lorsque le formulaire a bien été modifier   
+                if (isset($_SESSION['message'])){
+                    echo $_SESSION['message'];
+                    unset($_SESSION['message']);
+                };
+            ?>
+            </div>
+
+            <div class='alert'>
+            <?php  
+                // envoie un message lorsqu'on supprime un formulaire
+                if (isset($_SESSION['delete'])){
+                    echo $_SESSION['delete'];
+                    unset($_SESSION['delete']);
+                };
+            ?>
+            </div> 
+            
+            <div class='alert'>
+                <?php    
+                    // envoie un message lorsque le formulaire a bien été créer   
+                    if (isset($_SESSION['createMessage'])){
+                        echo $_SESSION['createMessage'];
+                        unset($_SESSION['createMessage']);
+                    };
                 ?>
+            </div>
+
+            <div>
+                <?php
+                    if (isset($_SESSION["deleteErrors"])){ // Si il y a une $_SESSION['deleteErrors] alors
+                        foreach($_SESSION["deleteErrors"] as $error) {
+                            if ($error != false) {
+                                echo $alert = "<p class='errors'>" . $error . "</p>";	// envoie le message d'erreure		
+                            }
+                                unset($_SESSION["deleteErrors"]); // supprime le message d'erreur a chaque refresh de page
+                        }
+                    };
+                ?>
+            </div>
 
             <section class='pricing'>
 
@@ -47,26 +98,6 @@
                         }; 
                     ?>
                     
-                    <?php
-                        if (isset($_SESSION["errors"])){ // Si il y a une $_SESSION['errors] alors
-                            foreach($_SESSION["errors"] as $error) {
-                                if ($error != false) {
-                                    echo $alert = "<p class='errors'>" . $error . "</p>";	// envoie le message d'alerte		
-                                }
-                            unset($_SESSION["errors"]); // supprime le message d'alert a chaque refresh de page
-                            }
-                        };
-                    ?>
-
-                    <div class='alert'>
-                        <?php  
-                            // envoie un message lorsqu'on supprime un formulaire
-                            if (isset($_SESSION['delete'])){
-                                echo $_SESSION['delete'];
-                                unset($_SESSION['delete']);
-                            };
-                        ?>
-                    </div>   
                 </main>
             </section>
 
@@ -82,28 +113,7 @@
                         // fonction divCreate() qui crée un formulaire
                         divCreate();
                     ?>
-
-                    <div class='alert'>
-                        <?php    
-                            // envoie un message lorsque le formulaire a bien été créer   
-                            if (isset($_SESSION['message'])){
-                                echo $_SESSION['message'];
-                                unset($_SESSION['message']);
-                            };
-                        ?>
-                    </div>
-                    <div>
-                        <?php
-                            if (isset($_SESSION["deleteErrors"])){ // Si il y a une $_SESSION['deleteErrors] alors
-                                foreach($_SESSION["deleteErrors"] as $error) {
-                                    if ($error != false) {
-                                        echo $alert = "<p class='errors'>" . $error . "</p>";	// envoie le message d'erreure		
-                                    }
-                                    unset($_SESSION["deleteErrors"]); // supprime le message d'erreur a chaque refresh de page
-                                }
-                            };
-                        ?>
-                    </div>
+                    
                 </main>
             </section>
         </body>

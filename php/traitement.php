@@ -126,8 +126,7 @@ if(isset($_POST['button'])){
 
   if (!empty($_SESSION['email'])){  // si $_SESSION['email'] est non null alors
     header("Location:../index.php");
-  } else { // sinon fait la fonction 
-    
+  } else { // sinon fait la fonction    
     // envoie un message de confirmation
     $_SESSION['addEmail'] = 'Votre email a bien été enregistré !';
     // renvoie a admin.php 

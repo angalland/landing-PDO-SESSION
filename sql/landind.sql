@@ -19,3 +19,9 @@ VALUES
 
 ALTER TABLE pricing -- crée une nouvelle colonne count_join dans la table pricing
 ADD count_join int DEFAULT 0; -- avec pour valeur par défault 0
+
+CREATE TABLE IF NOT EXISTS email_table ( --crée une table email qui stockera des emails
+    id_email int(11) NOT NULL AUTO_INCREMENT,
+    email varchar(255) NOT NULL,
+    PRIMARY KEY (id_email)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COLLATE=utf8_bin;

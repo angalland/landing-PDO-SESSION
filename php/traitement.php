@@ -1,56 +1,71 @@
 <?php
 
+// si il n'y a pas de session ouverte en demarre une
 if (session_id() == "")
   session_start();
+// lie le fichier db-functions a traitement.php
 require_once('db-functions.php');
 
+// si submitUpdate a été enclenché
 if(isset($_POST['submitUpdate'])){
-    // var_dump($_POST);
-    // exit();
+
+    // récupere les données de $_post dans $datas sous forme de tableaux
     $datas = [];
+    // crée une $_SESSION['errors']
     $_SESSION["errors"] = [];
 
+    // filtre les données pour id, nom et price, si filter_input renvoie false alors crée une entré dans $_SESSION['errors]
     ($datas['id_pricing'] = filter_input(INPUT_POST, "id_pricing", FILTER_VALIDATE_INT)) ? false : $_SESSION['errors'][]='Id_pricing non reconnue';    
     ($datas['nom_pricing'] = filter_input(INPUT_POST, "nom_pricing", FILTER_SANITIZE_STRING)) ? false : $_SESSION["errors"][] = "le nom est incorrecte, veuillez-saisir un nom sans caractère spéciaux";
     ($datas['price'] = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT)) ? false : $_SESSION["errors"][] = "Price est obligatoire, veuillez saisir un prix qui soit un entier positif";
 
+    // filtre les données pour sale, bandwitch, online_space, domain; avec une option minimum dans filter_imput; si filtre false alors $datas['donnee'] == null
     ($datas['sale'] = filter_input(INPUT_POST, "sale", FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min)))) ? false : $datas['sale'] = null;
     ($datas['bandwitch'] = filter_input(INPUT_POST, "bandwitch", FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min)))) ? false : $datas['bandwitch'] = null;
     ($datas['online_space'] = filter_input(INPUT_POST, "online_space", FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min)))) ? false : $datas['online_space'] = null;
     ($datas['domain'] = filter_input(INPUT_POST, "domain", FILTER_VALIDATE_INT,  array("options" => array("min_range"=>$min)))) ? false : $datas['domain'] = null;
 
+    // récupère les donnée des checkbox si cheked alors $datas = 1 sinon = 0;
     $datas['support'] = isset($_POST['support']) ? 1 : 0;
     $datas['hidden_fees'] = isset($_POST['hidden_fees']) ? 1 : 0;
-    
+
+    // si il y a $_SESSION['errors] alors renvoie sur admin.php
     if (!empty($_SESSION['errors'])){
         header("Location:../admin.php");
-    } else {
+    } else { // sinon fait la fonction update avec comme argument le tableau $datas
       update($datas);
-
+    // envoie un message de confirmation
     $_SESSION['message'] = 'Votre formulaire '.$datas['nom_pricing'].' a bien été modifié !';
-      
+    // renvoie a admin.php 
     header("Location:../admin.php");
     }
 }
 
+// si submitDelete est enclenché
 if(isset($_POST['submitDelete'])){
 
+  // récupère les données dans $datas sous forme de tableau
   $datas = [];
+
+  // crée $_SESSION['errors]
   $_SESSION["errors"] = [];
 
+  // filtre l'id si false crée une entré dans le tableau $_SESSION
   $_SESSION["errors"][] = ($datas['id_pricing'] = filter_input(INPUT_POST, "id_pricing", FILTER_VALIDATE_INT)) ? false : "Id_pricing non reconnue";
 
+  // si il a une valeur dans le tableau $_SESSION['errors'] 
   if (!empty($_SESSION["errors"])){
-    header("Location:../admin.php");
-  }
-
+    header("Location:../admin.php"); // renvoie vers admin
+  } // sinon
+  // appelle la fonction delete avec comme argument $datas
   delete($datas);
-
+  // envoie un message de confirmation
   $_SESSION['delete'] = 'Votre formulaire a bien été supprimé !';
-
+  // renvoie vers admin
   header("Location:../admin.php");
 }
 
+// si sumitCreate a été enclenché
 if(isset($_POST['submitCreate'])){
 
   $datas = [];
@@ -70,7 +85,7 @@ if(isset($_POST['submitCreate'])){
   if (!empty($_SESSION["deleteErrors"])){
     header("Location:../admin.php");
   }
-
+  // fait appelle a la fonction create avec en argument le tableau $datas
   create($datas);
 
   $_SESSION['message'] = 'Votre formulaire '.$datas['nom_pricing'].' a bien été crée !';

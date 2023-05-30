@@ -55,7 +55,6 @@ h2 {
     box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px ;
     padding-left: 30px;
     padding-right: 30px;
-    color : green;
     font-size: large;
 }
 
@@ -118,9 +117,20 @@ form div > label{
     border: 5px soldi red;
     border-radius: 5px;
     color :black;
-    font-size: 50px;
+    font-size: 25px;
     font-weight: bold;
     text-align: center;
+}
+
+.errors {
+    margin:5px;
+    padding:20px;
+    color:#FF3333;
+    background:#F8D7DA;
+    border-left:solid #FF5555;
+    border-radius: 5px;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 

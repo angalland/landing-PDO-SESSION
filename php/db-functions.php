@@ -203,7 +203,7 @@ function update($data){
         }
         
         ?><div class="articlePricing">
-            <form action='admin.php' method='post'>
+            <form action='php/admin.php' method='post'>
 
                 <input type='hidden' name='id_pricing' value='<?=$idPricing?>'>
                

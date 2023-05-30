@@ -175,7 +175,7 @@ section {
     transform: translateY(-10px);
     cursor: pointer;
 }
-
+/* MESSAGE ----------------------------------- */
 .errors {
     margin:5px;
     padding:20px;

@@ -76,7 +76,7 @@
                     <h2>Create Pricing</h2>
                 </header>
 
-                <main class="mainUpdate">
+                <main class="mainCreate">
 
                     <?php
                         // fonction divCreate() qui crée un formulaire

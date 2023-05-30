@@ -1,3 +1,4 @@
+/* GENERAL */
 * {
     margin: 0;
     box-sizing: border-box;
@@ -27,7 +28,7 @@ h2 {
     color: hsl(223, 82%, 59%);
 }
 
-/* Main ------------------------------------------------------------ */
+/* Main upadate------------------------------------------------------------ */
 .mainPricing {
     display: flex;
     flex-direction: row;
@@ -111,7 +112,7 @@ form div > label{
     transform: translateY(-10px);
     cursor: pointer;
 }
-
+/* Message update---------------------- */
 .alert {
     background-color: yellow;
     border: 5px soldi red;
@@ -132,8 +133,8 @@ form div > label{
     font-size: 25px;
     font-weight: bold;
 }
-
-.mainUpdate {
+/* CREATE------------------------- */
+.mainCreate {
     display: flex;
     flex-direction: column;
     justify-content: center;

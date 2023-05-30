@@ -1,3 +1,4 @@
+/* GENERAL  */
 * {
     margin: 0;
     box-sizing: border-box;
@@ -172,15 +173,4 @@ section {
 .buttonArticlePricing:hover {
     transform: translateY(-10px);
     cursor: pointer;
-}
-
-.alert {
-    background-color: yellow;
-    border: 5px soldi red;
-    border-radius: 5px;
-    color :black;
-    font-size: 50px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 15px;
 }
